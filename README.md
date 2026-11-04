@@ -102,12 +102,9 @@ For the multistage build, use this image: `mcr.microsoft.com/dotnet/runtime:8.0`
 
 This is a simple Nginx service. At its core, Nginx is a web-server but it can also be used for other purposes such as loadbalancing, HTTP cache, reverse proxy, etc.
 
-Use the base image `nginx`.
-
 To configure Nginx as a loadbalancer (LB), you first need to edit accordingly the `./nginx/nginx.conf` file from this repo.
-Then in the Dockerfile:
-- remove the default Nginx configuration located at `/etc/nginx/conf.d/default.conf`,
-- copy `./nginx/nginx.conf` into the container at the above location.
+
+Then in the Compose file, you need to create a volume to link your nginx configuration in the container at the path `/etc/nginx/conf.d/default.conf`
 
 ### Redis service
 
